@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,6 +19,7 @@ public class Order {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Brief{
+        private String PK;
         private String item_name;
         private String brandname;
         private String sale_qtty;
@@ -25,6 +28,17 @@ public class Order {
         private String cancel_flag;
         private String finish_flag;
         private String delete_flag;
+        public Brief(List<String> paramList){
+            after_prefr_unit_price=paramList.get(0);
+                    brandname=paramList.get(1);
+            cancel_flag=paramList.get(2);
+                    delete_flag=paramList.get(3);
+            finish_flag=paramList.get(4);
+                    item_name=paramList.get(5);
+            sale_qtty=paramList.get(6);
+                    self_ord_flag=paramList.get(7);
+                    PK=paramList.get(8);
+        }
     }
 
     @Data

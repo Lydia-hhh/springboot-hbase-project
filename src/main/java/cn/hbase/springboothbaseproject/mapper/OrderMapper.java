@@ -30,6 +30,7 @@ public class OrderMapper implements RowMapper<Order> {
     @Override
     public Order mapRow(Result result, int i) throws Exception {
         Order.Brief brief=new Order.Brief(
+                new String(result.getRow()),
                 new String(result.getValue(BRIEF_FAMILY,ITEM_NAME)),
                 new String(result.getValue(BRIEF_FAMILY,BRANDNAME)),
                 new String(result.getValue(BRIEF_FAMILY,SALE_QTTY)),

@@ -3,6 +3,7 @@ package cn.hbase.springboothbaseproject.mapper;
 import cn.hbase.springboothbaseproject.bean.Order;
 import com.spring4all.spring.boot.starter.hbase.api.RowMapper;
 import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.util.Bytes;
 
 public class BriefMapper implements RowMapper<Order.Brief> {
 
@@ -18,7 +19,9 @@ public class BriefMapper implements RowMapper<Order.Brief> {
 
     @Override
     public Order.Brief mapRow(Result result, int rowNum) throws Exception {
+       // System.out.println(Bytes.toString(result.getRow())+"   rowNum: "+rowNum);
         Order.Brief brief=new Order.Brief(
+                new String(result.getRow()),
                 new String(result.getValue(BRIEF_FAMILY,ITEM_NAME)),
                 new String(result.getValue(BRIEF_FAMILY,BRANDNAME)),
                 new String(result.getValue(BRIEF_FAMILY,SALE_QTTY)),
